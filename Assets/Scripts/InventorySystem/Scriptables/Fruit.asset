@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5f5fbe1864a3e4bbe6962d1fc9c1d6, type: 3}
   m_Name: Fruit
   m_EditorClassIdentifier: Assembly-CSharp::ItemFruit
-  Name: 
-  Description: 
-  ImageUI: {fileID: 0}
-  IsStackable: 0
-  Cost: 0
+  Name: Apple
+  Description: A red tasty Apple.
+  ImageUI: {fileID: 7293598183456022363, guid: 6066e05f9f148ab4297ddc0618c3304f, type: 3}
+  IsStackable: 1
+  Cost: 2
   Type: 0
-  EnergyPoints: 0
+  EnergyPoints: 5

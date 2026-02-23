@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf44d993250ca3e4c8a9c200227e5f01, type: 3}
   m_Name: BluePotion
   m_EditorClassIdentifier: Assembly-CSharp::ItemPotion
-  Name: 
-  Description: 
-  ImageUI: {fileID: 0}
-  IsStackable: 0
-  Cost: 0
+  Name: Blue Potion
+  Description: A Blue Potion that heals the one who drinks it.
+  ImageUI: {fileID: 5177666693930723060, guid: ffb7af4067204154e865982f4c171c90, type: 3}
+  IsStackable: 1
+  Cost: 6
   Type: 1
-  LifeRestore: 0
+  LifeRestore: 10

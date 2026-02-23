@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38509ee694f513d44bb3a6d4ac1728a1, type: 3}
   m_Name: ShopInventory
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  Slots: []
+  Slots:
+  - Item: {fileID: 0}
+    Amount: 0
+  - Item: {fileID: 0}
+    Amount: 0
+  - Item: {fileID: 0}
+    Amount: 0
+  - Item: {fileID: 0}
+    Amount: 0

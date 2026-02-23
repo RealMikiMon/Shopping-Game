@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6a77b334e8904419c81402fbb6942f, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: Assembly-CSharp::ItemWeapon
-  Name: 
-  Description: 
-  ImageUI: {fileID: 0}
+  Name: Sword
+  Description: A silver Sword that can cause damage !
+  ImageUI: {fileID: 4664467146931753940, guid: c6cec08e6a95a8d49825134a28c37599, type: 3}
   IsStackable: 0
-  Cost: 0
+  Cost: 8
   Type: 0
-  DamagePoints: 0
+  DamagePoints: 15
