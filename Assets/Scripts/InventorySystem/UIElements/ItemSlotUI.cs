@@ -40,7 +40,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         RaycastHit2D hitData = Physics2D.GetRayIntersection(
-        Camera.main.ScreenPointToRay(Input.mousePosition));
+            Camera.main.ScreenPointToRay(Input.mousePosition));
 
         if (hitData)
         {
@@ -49,6 +49,38 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             {
                 (item as ConsumableItem).Use(consumer);
                 inventory.UseItem(item);
+            }
+            var receiver = hitData.collider.gameObject.GetComponent<IInventoryReceiver>();
+            if (receiver != null)
+            {
+                Inventory targetInventory = receiver.GetInventory();
+                Inventory sourceInventory = inventory.Inventory;
+
+                if (targetInventory != sourceInventory)
+                {
+                    var money = FindObjectOfType<PlayerMoneyUI>();
+                    if (sourceInventory.name == "PlayerInventory" &&
+                        targetInventory.name == "ShopInventory")
+                    {
+                        money.AddMoney(item.Cost);
+                        targetInventory.AddItem(item);
+                        sourceInventory.RemoveItem(item);
+                    }
+                    else if (sourceInventory.name == "ShopInventory" &&
+                             targetInventory.name == "PlayerInventory")
+                    {
+                        if (money.CanAfford(item.Cost))
+                        {
+                            money.SpendMoney(item.Cost);
+                            targetInventory.AddItem(item);
+                            sourceInventory.RemoveItem(item);
+                        }
+                        else
+                        {
+                            Debug.Log("No tens prou diners!");
+                        }
+                    }
+                }
             }
         }
         transform.SetParent(parent.transform);
