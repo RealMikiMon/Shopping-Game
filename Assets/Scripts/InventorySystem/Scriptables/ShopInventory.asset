@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   Slots:
   - Item: {fileID: 11400000, guid: 739355f6ff9eeab428620a57f53e12f8, type: 2}
-    Amount: 99
+    Amount: 2
   - Item: {fileID: 11400000, guid: 38c7a911ec0826149a348aee1b8cb706, type: 2}
-    Amount: 99
+    Amount: 2
   - Item: {fileID: 11400000, guid: 1dac1751521cccd49ad3d57106be9fc5, type: 2}
-    Amount: 99
+    Amount: 2

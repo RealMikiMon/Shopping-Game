@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 130334050}
   - component: {fileID: 130334049}
   - component: {fileID: 130334052}
+  - component: {fileID: 130334053}
+  - component: {fileID: 130334054}
   m_Layer: 5
   m_Name: InventoryShop
   m_TagString: Untagged
@@ -154,10 +156,10 @@ RectTransform:
   - {fileID: 662253835}
   m_Father: {fileID: 1945315788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.22027084, y: 0.14444444}
-  m_AnchorMax: {x: 0.5, y: 0.79255563}
-  m_AnchoredPosition: {x: 691.9997, y: 34}
-  m_SizeDelta: {x: -6.76, y: -1.3358}
+  m_AnchorMin: {x: 0.14556251, y: 0.1768889}
+  m_AnchorMax: {x: 0.42268756, y: 0.8248519}
+  m_AnchoredPosition: {x: 838.4997, y: -1}
+  m_SizeDelta: {x: -1.7600098, y: -1.3358002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130334049
 MonoBehaviour:
@@ -236,6 +238,65 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: 5e0850d97add12842862a4d412466188, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
+--- !u!61 &130334053
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130334047}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &130334054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130334047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ad4618eb54aa04083c90486330e157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryReceiver
+  Inventory: {fileID: 11400000, guid: 5e0850d97add12842862a4d412466188, type: 2}
 --- !u!1 &343503010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1569,8 @@ GameObject:
   - component: {fileID: 1830295680}
   - component: {fileID: 1830295679}
   - component: {fileID: 1830295682}
+  - component: {fileID: 1830295683}
+  - component: {fileID: 1830295684}
   m_Layer: 5
   m_Name: InventoryPlayer
   m_TagString: Untagged
@@ -1530,10 +1593,10 @@ RectTransform:
   - {fileID: 1837603118}
   m_Father: {fileID: 1945315788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.66245824, y: 0.14444444}
-  m_AnchorMax: {x: 0.94160426, y: 0.79255563}
-  m_AnchoredPosition: {x: -999, y: 34.332855}
-  m_SizeDelta: {x: 0, y: -0.67004}
+  m_AnchorMin: {x: 0.5817085, y: 0.16762964}
+  m_AnchorMax: {x: 0.85839593, y: 0.8248519}
+  m_AnchoredPosition: {x: -840.5, y: 4.332855}
+  m_SizeDelta: {x: 5, y: -10.67004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1830295679
 MonoBehaviour:
@@ -1612,6 +1675,65 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: 7559151a8848df64bb14bf526444d5a4, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
+--- !u!61 &1830295683
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830295677}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1830295684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830295677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ad4618eb54aa04083c90486330e157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryReceiver
+  Inventory: {fileID: 11400000, guid: 7559151a8848df64bb14bf526444d5a4, type: 2}
 --- !u!1 &1837603117
 GameObject:
   m_ObjectHideFlags: 0
