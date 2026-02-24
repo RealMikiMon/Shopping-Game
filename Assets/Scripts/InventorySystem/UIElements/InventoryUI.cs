@@ -4,6 +4,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public Inventory Inventory;
+    public Inventory OtherInventory;
     public ItemSlotUI SlotPrefab;
     public PlayerMoneyUI MoneyUI;
     public PlayerMoneyUI OtherMoneyUI;
@@ -65,9 +66,52 @@ public class InventoryUI : MonoBehaviour
         SelectedSlot = slot;
     }
 
-
     public void UseItem(ItemBase item)
     {
+        Inventory.RemoveItem(item);
+    }
+    public void OnSellButton() 
+    {
+        if (SelectedSlot == null) 
+        {
+            return;
+        }
+
+        ItemBase item = SelectedSlot.GetItem();
+
+        if (Inventory.name != "PlayerInventory") 
+        {
+            return;
+        }
+
+        MoneyUI.AddMoney(item.Cost);
+        OtherMoneyUI.SpendMoney(item.Cost);
+        OtherInventory.AddItem(item);
+        Inventory.RemoveItem(item);
+    }
+
+    public void OnBuyButton()
+    {
+        if (SelectedSlot == null) 
+        {
+            return;
+        }
+
+        ItemBase item = SelectedSlot.GetItem();
+
+        if (Inventory.name != "ShopInventory")
+        {
+            return;
+        }
+
+        if (!OtherMoneyUI.CanAfford(item.Cost))
+        {
+            return;
+        }
+
+        OtherMoneyUI.SpendMoney(item.Cost);
+        MoneyUI.AddMoney(item.Cost);
+        OtherInventory.AddItem(item);
         Inventory.RemoveItem(item);
     }
 }

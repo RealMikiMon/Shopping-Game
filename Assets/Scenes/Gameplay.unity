@@ -236,10 +236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   Inventory: {fileID: 11400000, guid: 5e0850d97add12842862a4d412466188, type: 2}
+  OtherInventory: {fileID: 11400000, guid: 7559151a8848df64bb14bf526444d5a4, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
   MoneyUI: {fileID: 662253839}
   OtherMoneyUI: {fileID: 1837603122}
+  SelectedSlot: {fileID: 0}
 --- !u!61 &130334053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -755,7 +757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1089,7 +1091,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1262748623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 130334052}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OnBuyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1262748623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,7 +1245,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1364053392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1830295682}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OnSellButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1364053392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,10 +1716,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   Inventory: {fileID: 11400000, guid: 7559151a8848df64bb14bf526444d5a4, type: 2}
+  OtherInventory: {fileID: 11400000, guid: 5e0850d97add12842862a4d412466188, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
   MoneyUI: {fileID: 1837603122}
   OtherMoneyUI: {fileID: 662253839}
+  SelectedSlot: {fileID: 0}
 --- !u!61 &1830295683
 BoxCollider2D:
   m_ObjectHideFlags: 0
