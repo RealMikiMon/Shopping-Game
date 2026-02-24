@@ -238,6 +238,8 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: 5e0850d97add12842862a4d412466188, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
+  MoneyUI: {fileID: 662253839}
+  OtherMoneyUI: {fileID: 1837603122}
 --- !u!61 &130334053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -686,6 +688,7 @@ GameObject:
   - component: {fileID: 662253838}
   - component: {fileID: 662253837}
   - component: {fileID: 662253836}
+  - component: {fileID: 662253839}
   m_Layer: 5
   m_Name: ShopMoney
   m_TagString: Untagged
@@ -832,6 +835,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662253834}
   m_CullTransparentMesh: 1
+--- !u!114 &662253839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662253834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587965c228bae1841a41e39b30d49d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoneyUI
+  Money: 10
+  MoneyText: {fileID: 662253837}
 --- !u!1 &1247352396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1692,8 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: 7559151a8848df64bb14bf526444d5a4, type: 2}
   SlotPrefab: {fileID: 8425451419162457401, guid: 7171fb8f323e9aa418a4de1be231cecc,
     type: 3}
+  MoneyUI: {fileID: 1837603122}
+  OtherMoneyUI: {fileID: 662253839}
 --- !u!61 &1830295683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1746,6 +1765,7 @@ GameObject:
   - component: {fileID: 1837603120}
   - component: {fileID: 1837603119}
   - component: {fileID: 1837603121}
+  - component: {fileID: 1837603122}
   m_Layer: 5
   m_Name: PlayerMoney
   m_TagString: Untagged
@@ -1892,6 +1912,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1837603122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837603117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587965c228bae1841a41e39b30d49d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoneyUI
+  Money: 100
+  MoneyText: {fileID: 1837603119}
 --- !u!1 &1945315784
 GameObject:
   m_ObjectHideFlags: 0
