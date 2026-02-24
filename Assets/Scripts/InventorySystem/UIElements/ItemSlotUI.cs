@@ -8,11 +8,12 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
-
     private Canvas canvas;
     private Transform parent;
     private ItemBase item;
     private InventoryUI inventory;
+    private GraphicRaycaster raycaster;
+    private EventSystem eventSystem;
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
@@ -22,6 +23,10 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         AmountText.enabled = (slot.Amount > 1);
         item = slot.Item;
         this.inventory = inventory;
+
+        if (!canvas) canvas = GetComponentInParent<Canvas>();
+        if (canvas) raycaster = canvas.GetComponent<GraphicRaycaster>();
+        eventSystem = EventSystem.current;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -39,18 +44,17 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        RaycastHit2D hitData = Physics2D.GetRayIntersection(
-            Camera.main.ScreenPointToRay(Input.mousePosition));
-
-        if (hitData)
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(eventData, results);
+        foreach (var result in results)
         {
-            var consumer = hitData.collider.gameObject.GetComponent<IConsume>();
-            if ((consumer != null) && (item is ConsumableItem))
+            var consumer = result.gameObject.GetComponent<IConsume>();
+            if (consumer != null && item is ConsumableItem)
             {
                 (item as ConsumableItem).Use(consumer);
                 inventory.UseItem(item);
             }
-            var receiver = hitData.collider.gameObject.GetComponent<IInventoryReceiver>();
+            var receiver = result.gameObject.GetComponent<IInventoryReceiver>();
             if (receiver != null)
             {
                 Inventory targetInventory = receiver.GetInventory();
@@ -58,27 +62,28 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
                 if (targetInventory != sourceInventory)
                 {
-                    var money = FindObjectOfType<PlayerMoneyUI>();
+                    //var money = FindObjectOfType<PlayerMoneyUI>();
+
                     if (sourceInventory.name == "PlayerInventory" &&
                         targetInventory.name == "ShopInventory")
                     {
-                        money.AddMoney(item.Cost);
+                        //money.AddMoney(item.Cost);
                         targetInventory.AddItem(item);
                         sourceInventory.RemoveItem(item);
                     }
                     else if (sourceInventory.name == "ShopInventory" &&
                              targetInventory.name == "PlayerInventory")
                     {
-                        if (money.CanAfford(item.Cost))
-                        {
-                            money.SpendMoney(item.Cost);
+                        //if (money.CanAfford(item.Cost))
+                        //{
+                            //money.SpendMoney(item.Cost);
                             targetInventory.AddItem(item);
                             sourceInventory.RemoveItem(item);
-                        }
-                        else
-                        {
-                            Debug.Log("No tens prou diners!");
-                        }
+                        //}
+                        //else
+                        //{
+                            //Debug.Log("No tens prou diners!");
+                        //}
                     }
                 }
             }
