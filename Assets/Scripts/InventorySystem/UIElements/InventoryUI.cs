@@ -6,7 +6,9 @@ public class InventoryUI : MonoBehaviour
     public Inventory Inventory;
     public ItemSlotUI SlotPrefab;
     public PlayerMoneyUI MoneyUI;
-    public PlayerMoneyUI OtherMoneyUI; 
+    public PlayerMoneyUI OtherMoneyUI;
+    public ItemSlotUI SelectedSlot;
+
 
 
     List<GameObject> itemSlotList;
@@ -57,6 +59,12 @@ public class InventoryUI : MonoBehaviour
         element.Initialize(itemSlot, this);
         return element.gameObject;
     }
+
+    public void SelectSlot(ItemSlotUI slot)
+    {
+        SelectedSlot = slot;
+    }
+
 
     public void UseItem(ItemBase item)
     {
