@@ -8,7 +8,6 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
-
     private Canvas canvas;
     private Transform parent;
     private ItemBase item;
@@ -58,24 +57,26 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             {
                 Inventory targetInventory = receiver.GetInventory();
                 Inventory sourceInventory = inventory.Inventory;
-
                 if (targetInventory != sourceInventory)
                 {
-                    var money = inventory.MoneyUI;
-
+                    var thisMoney = inventory.MoneyUI;         
+                    var otherMoney = inventory.OtherMoneyUI;   
                     if (sourceInventory.name == "PlayerInventory" &&
                         targetInventory.name == "ShopInventory")
                     {
-                        money.AddMoney(item.Cost);
+                        thisMoney.AddMoney(item.Cost);      
+                        otherMoney.SpendMoney(item.Cost);   
+
                         targetInventory.AddItem(item);
                         sourceInventory.RemoveItem(item);
                     }
                     else if (sourceInventory.name == "ShopInventory" &&
                              targetInventory.name == "PlayerInventory")
                     {
-                        if (money.CanAfford(item.Cost))
+                        if (otherMoney.CanAfford(item.Cost))
                         {
-                            money.SpendMoney(item.Cost);
+                            otherMoney.SpendMoney(item.Cost); 
+                            thisMoney.AddMoney(item.Cost);    
                             targetInventory.AddItem(item);
                             sourceInventory.RemoveItem(item);
                         }

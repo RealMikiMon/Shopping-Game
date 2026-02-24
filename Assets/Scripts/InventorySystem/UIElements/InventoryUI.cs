@@ -6,6 +6,8 @@ public class InventoryUI : MonoBehaviour
     public Inventory Inventory;
     public ItemSlotUI SlotPrefab;
     public PlayerMoneyUI MoneyUI;
+    public PlayerMoneyUI OtherMoneyUI; 
+
 
     List<GameObject> itemSlotList;
 
