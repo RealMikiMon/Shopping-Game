@@ -8,6 +8,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
+
     private Canvas canvas;
     private Transform parent;
     private ItemBase item;
@@ -21,6 +22,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         Image.SetNativeSize();
         AmountText.text = slot.Amount.ToString();
         AmountText.enabled = (slot.Amount > 1);
+
         item = slot.Item;
         this.inventory = inventory;
 
@@ -28,7 +30,6 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (canvas) raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = EventSystem.current;
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!canvas) canvas = GetComponentInParent<Canvas>();
@@ -36,12 +37,10 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling();
     }
-
     public void OnDrag(PointerEventData eventData)
     {
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0);
     }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         List<RaycastResult> results = new List<RaycastResult>();
@@ -62,7 +61,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
                 if (targetInventory != sourceInventory)
                 {
-                    var money = FindObjectOfType<PlayerMoneyUI>();
+                    var money = inventory.MoneyUI;
 
                     if (sourceInventory.name == "PlayerInventory" &&
                         targetInventory.name == "ShopInventory")
