@@ -62,28 +62,28 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
                 if (targetInventory != sourceInventory)
                 {
-                    //var money = FindObjectOfType<PlayerMoneyUI>();
+                    var money = FindObjectOfType<PlayerMoneyUI>();
 
                     if (sourceInventory.name == "PlayerInventory" &&
                         targetInventory.name == "ShopInventory")
                     {
-                        //money.AddMoney(item.Cost);
+                        money.AddMoney(item.Cost);
                         targetInventory.AddItem(item);
                         sourceInventory.RemoveItem(item);
                     }
                     else if (sourceInventory.name == "ShopInventory" &&
                              targetInventory.name == "PlayerInventory")
                     {
-                        //if (money.CanAfford(item.Cost))
-                        //{
-                            //money.SpendMoney(item.Cost);
+                        if (money.CanAfford(item.Cost))
+                        {
+                            money.SpendMoney(item.Cost);
                             targetInventory.AddItem(item);
                             sourceInventory.RemoveItem(item);
-                        //}
-                        //else
-                        //{
-                            //Debug.Log("No tens prou diners!");
-                        //}
+                        }
+                        else
+                        {
+                            Debug.Log("No tens prou diners!");
+                        }
                     }
                 }
             }
