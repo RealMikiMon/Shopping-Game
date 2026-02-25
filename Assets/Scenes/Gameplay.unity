@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587965c228bae1841a41e39b30d49d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoneyUI
-  Money: 10
+  Money: 50
   MoneyText: {fileID: 662253837}
 --- !u!114 &881418627 stripped
 MonoBehaviour:
