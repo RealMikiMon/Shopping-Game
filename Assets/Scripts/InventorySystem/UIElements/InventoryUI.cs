@@ -115,14 +115,14 @@ public class InventoryUI : MonoBehaviour
         ItemBase item = SelectedSlot.GetItem();
         if (item is ItemWeapon weapon)
         {
-            HealthUI.RestoreHealth(weapon.DamagePoints);
+            HealthUI.LoseHealth(weapon.DamagePoints);
         }
         else if (item is ItemPotion potion)
         {
 
-            HealthUI.LoseHealth(potion.LifeRestore);
-        }
-        Inventory.RemoveItem(item);
+            HealthUI.RestoreHealth(potion.LifeRestore);
+        } 
+            Inventory.RemoveItem(item);
     }
 
 }
