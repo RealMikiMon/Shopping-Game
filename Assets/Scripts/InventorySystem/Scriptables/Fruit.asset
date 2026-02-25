@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5f5fbe1864a3e4bbe6962d1fc9c1d6, type: 3}
+  m_Name: Fruit
+  m_EditorClassIdentifier: Assembly-CSharp::ItemFruit
+  Name: Apple
+  Description: A red tasty Apple.
+  ImageUI: {fileID: 7293598183456022363, guid: 6066e05f9f148ab4297ddc0618c3304f, type: 3}
+  IsStackable: 1
+  Cost: 2
+  Type: 0
+  EnergyPoints: 5
