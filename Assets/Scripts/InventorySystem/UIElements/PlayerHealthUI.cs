@@ -20,10 +20,18 @@ public class PlayerHealthUI : MonoBehaviour
     {
         Health -= amount;
         UpdateUI();
+
+        if(Health <= 0)
+        {
+            Health = 0;
+            UpdateUI();
+            SceneHandler.Instance.ChangeScene();
+        }
     }
 
     private void UpdateUI()
     {
         HealthText.text = "Health: " + Health.ToString();
     }
+
 }
