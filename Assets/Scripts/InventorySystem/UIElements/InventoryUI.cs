@@ -9,9 +9,6 @@ public class InventoryUI : MonoBehaviour
     public PlayerMoneyUI MoneyUI;
     public PlayerMoneyUI OtherMoneyUI;
     public ItemSlotUI SelectedSlot;
-
-
-
     List<GameObject> itemSlotList;
 
     void Start()
@@ -70,20 +67,18 @@ public class InventoryUI : MonoBehaviour
     {
         Inventory.RemoveItem(item);
     }
+
     public void OnSellButton() 
     {
         if (SelectedSlot == null) 
         {
             return;
         }
-
         ItemBase item = SelectedSlot.GetItem();
-
         if (Inventory.name != "PlayerInventory") 
         {
             return;
         }
-
         MoneyUI.AddMoney(item.Cost);
         OtherMoneyUI.SpendMoney(item.Cost);
         OtherInventory.AddItem(item);
@@ -96,19 +91,15 @@ public class InventoryUI : MonoBehaviour
         {
             return;
         }
-
         ItemBase item = SelectedSlot.GetItem();
-
         if (Inventory.name != "ShopInventory")
         {
             return;
         }
-
         if (!OtherMoneyUI.CanAfford(item.Cost))
         {
             return;
         }
-
         OtherMoneyUI.SpendMoney(item.Cost);
         MoneyUI.AddMoney(item.Cost);
         OtherInventory.AddItem(item);

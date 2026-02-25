@@ -8,9 +8,7 @@ public class ItemBase : ScriptableObject
     public string Name;
     [TextArea] public string Description;
     public Sprite ImageUI;
-
     public bool IsStackable;
     public int Cost;
-
     public ItemType Type;
 }

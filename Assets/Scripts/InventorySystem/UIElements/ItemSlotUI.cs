@@ -10,7 +10,6 @@ public class ItemSlotUI : MonoBehaviour,
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
-
     private Canvas canvas;
     private Transform parent;
     private ItemBase item;
@@ -24,33 +23,36 @@ public class ItemSlotUI : MonoBehaviour,
         Image.SetNativeSize();
         AmountText.text = slot.Amount.ToString();
         AmountText.enabled = (slot.Amount > 1);
-
         item = slot.Item;
         this.inventory = inventory;
-
         if (!canvas) canvas = GetComponentInParent<Canvas>();
         if (canvas) raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = EventSystem.current;
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         inventory.SelectSlot(this);
         FlashSelect();
     }
+
     public ItemBase GetItem()
     {
         return item;
     }
+
     public void FlashSelect()
     {
         StartCoroutine(FlashRoutine());
     }
+
     private IEnumerator FlashRoutine()
     {
         Image.color = Color.yellow;
         yield return new WaitForSeconds(0.15f);
         Image.color = Color.white;
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!canvas) canvas = GetComponentInParent<Canvas>();
@@ -58,6 +60,7 @@ public class ItemSlotUI : MonoBehaviour,
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling();
     }
+
     public void OnDrag(PointerEventData eventData)
     {
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0);
@@ -67,7 +70,6 @@ public class ItemSlotUI : MonoBehaviour,
     {
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(eventData, results);
-
         foreach (var result in results)
         {
             var consumer = result.gameObject.GetComponent<IConsume>();
@@ -76,28 +78,23 @@ public class ItemSlotUI : MonoBehaviour,
                 (item as ConsumableItem).Use(consumer);
                 inventory.UseItem(item);
             }
-
             var receiver = result.gameObject.GetComponent<IInventoryReceiver>();
             if (receiver != null)
             {
                 Inventory targetInventory = receiver.GetInventory();
                 Inventory sourceInventory = inventory.Inventory;
-
                 if (targetInventory != sourceInventory)
                 {
                     var thisMoney = inventory.MoneyUI;
                     var otherMoney = inventory.OtherMoneyUI;
-
                     if (sourceInventory.name == "PlayerInventory" &&
                         targetInventory.name == "ShopInventory")
                     {
                         thisMoney.AddMoney(item.Cost);
                         otherMoney.SpendMoney(item.Cost);
-
                         targetInventory.AddItem(item);
                         sourceInventory.RemoveItem(item);
                     }
-
                     else if (sourceInventory.name == "ShopInventory" &&
                              targetInventory.name == "PlayerInventory")
                     {
@@ -105,7 +102,6 @@ public class ItemSlotUI : MonoBehaviour,
                         {
                             otherMoney.SpendMoney(item.Cost);
                             thisMoney.AddMoney(item.Cost);
-
                             targetInventory.AddItem(item);
                             sourceInventory.RemoveItem(item);
                         }
