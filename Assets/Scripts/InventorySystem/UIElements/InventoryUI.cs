@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
     public ItemSlotUI SlotPrefab;
     public PlayerMoneyUI MoneyUI;
     public PlayerMoneyUI OtherMoneyUI;
+    public PlayerHealthUI HealthUI;
     public ItemSlotUI SelectedSlot;
     List<GameObject> itemSlotList;
 
@@ -62,7 +63,6 @@ public class InventoryUI : MonoBehaviour
     {
         SelectedSlot = slot;
     }
-
     public void UseItem(ItemBase item)
     {
         Inventory.RemoveItem(item);
@@ -105,4 +105,24 @@ public class InventoryUI : MonoBehaviour
         OtherInventory.AddItem(item);
         Inventory.RemoveItem(item);
     }
+
+    public void OnUseButton()
+    {
+        if (SelectedSlot == null)
+        {
+            return;
+        }
+        ItemBase item = SelectedSlot.GetItem();
+        if (item is ItemWeapon weapon)
+        {
+            HealthUI.RestoreHealth(weapon.DamagePoints);
+        }
+        else if (item is ItemPotion potion)
+        {
+
+            HealthUI.LoseHealth(potion.LifeRestore);
+        }
+        Inventory.RemoveItem(item);
+    }
+
 }
