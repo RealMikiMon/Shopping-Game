@@ -241,6 +241,7 @@ MonoBehaviour:
     type: 3}
   MoneyUI: {fileID: 662253839}
   OtherMoneyUI: {fileID: 1837603122}
+  HealthUI: {fileID: 0}
   SelectedSlot: {fileID: 0}
 --- !u!61 &130334053
 BoxCollider2D:
@@ -480,7 +481,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459301647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 130334052}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OnUseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &459301647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +887,7 @@ GameObject:
   - component: {fileID: 1093069460}
   - component: {fileID: 1093069462}
   - component: {fileID: 1093069461}
+  - component: {fileID: 1093069463}
   m_Layer: 5
   m_Name: Vida
   m_TagString: Untagged
@@ -1000,6 +1014,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093069459}
   m_CullTransparentMesh: 1
+--- !u!114 &1093069463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093069459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ee94665b463e49aa394b0bf7014d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthUI
+  Health: 100
+  HealthText: {fileID: 1093069461}
 --- !u!1 &1247352396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +1978,7 @@ MonoBehaviour:
     type: 3}
   MoneyUI: {fileID: 1837603122}
   OtherMoneyUI: {fileID: 662253839}
+  HealthUI: {fileID: 0}
   SelectedSlot: {fileID: 0}
 --- !u!61 &1830295683
 BoxCollider2D:
